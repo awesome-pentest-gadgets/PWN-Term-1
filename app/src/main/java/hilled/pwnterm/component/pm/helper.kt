@@ -1,6 +1,9 @@
 package hilled.pwnterm.component.pm
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import hilled.pwnterm.App
+import hilled.pwnterm.BuildConfig.DEBUG
 import hilled.pwnterm.R
 import hilled.pwnterm.component.ComponentManager
 import hilled.pwnterm.component.config.NeoTermPath
@@ -64,7 +67,8 @@ object SourceHelper {
         val fixedPath = path.replace("/", "_").substring(1) // skip the last '/'
         builder.append(fixedPath)
       }
-      builder.append("_dists_${source.repo.replace(" ".toRegex(), "_")}_binary-")
+      builder.append("dists_${source.repo.replace(" ".toRegex(), "_")}_binary-")
+      Log.d(TAG, "LOGD: " + builder.toString())
       return builder.toString()
     } catch (e: Exception) {
       NLog.e("PM", "Failed to detect source file prefix: ${e.localizedMessage}")
@@ -80,7 +84,7 @@ class SourceManager internal constructor() {
     if (database.findAll<Source>(Source::class.java).isEmpty()) {
       App.get().resources.getStringArray(R.array.pref_package_source_values)
         .forEach {
-          database.saveBean(Source(it, "stable main", true))
+          database.saveBean(Source(it, "rolling main", true))
         }
     }
   }
@@ -109,7 +113,7 @@ class SourceManager internal constructor() {
   fun getMainPackageSource(): String {
     return getEnabledSources()
       .map { it.repo }
-      .singleOrNull { it.trim() == "stable main" }
+      .singleOrNull { it.trim() == "rolling main" }
       ?: NeoTermPath.DEFAULT_MAIN_PACKAGE_SOURCE
   }
 
