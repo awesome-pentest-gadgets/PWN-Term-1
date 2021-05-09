@@ -31,7 +31,7 @@ object NeoTermPath {
   const val APT_BIN_PATH = "$USR_PATH/bin/apt"
   const val LIB_PATH = "$USR_PATH/lib"
 
-  const val CUSTOM_PATH = "$HOME_PATH/.neoterm"
+  const val CUSTOM_PATH = "$HOME_PATH/.pwnterm"
   const val NEOTERM_LOGIN_SHELL_PATH = "$CUSTOM_PATH/shell"
   const val EKS_PATH = "$CUSTOM_PATH/eks"
   const val EKS_DEFAULT_FILE = "$EKS_PATH/default.nl"
@@ -43,7 +43,7 @@ object NeoTermPath {
   const val SOURCE_FILE = "$USR_PATH/etc/apt/sources.list"
   const val PACKAGE_LIST_DIR = "$USR_PATH/var/lib/apt/lists"
 
-  private const val SOURCE = "https://raw.githubusercontent.com/NeoTerm/NeoTerm-repo/main"
+  private const val SOURCE = "gitlab.com/pwn-hunter/apt-repository/-/raw/rolling/"
 
   val DEFAULT_MAIN_PACKAGE_SOURCE: String
 
