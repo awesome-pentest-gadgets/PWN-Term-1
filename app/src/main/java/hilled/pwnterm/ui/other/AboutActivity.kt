@@ -129,7 +129,11 @@ class AboutActivity : AppCompatActivity() {
     }
 
     findViewById<View>(R.id.about_source_code_view).setOnClickListener {
-      openUrl("https://github.com/NeoTerm/NeoTerm")
+      openUrl("https://gitlab.com/pwn-hunter/pwn-term")
+    }
+
+    findViewById<View>(R.id.about_donate).setOnClickListener {
+      openUrl("https://paypal.me/martinvlba")
     }
 
     findViewById<View>(R.id.about_reset_app_view).setOnClickListener {

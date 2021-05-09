@@ -135,6 +135,37 @@
           </LinearLayout>
 
           <LinearLayout
+            android:id="@+id/about_donate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="invisible"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/md_list_item_height"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <ImageView
+              android:layout_width="24dp"
+              android:layout_height="24dp"
+              app:srcCompat="@drawable/ic_donate"/>
+
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="32dp"
+              android:layout_marginStart="32dp"
+              android:paddingBottom="8dp"
+              android:paddingTop="8dp"
+              android:text="@string/support_donate_label"
+              android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
+
+          </LinearLayout>
+
+          <LinearLayout
             android:id="@+id/about_source_code_view"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
