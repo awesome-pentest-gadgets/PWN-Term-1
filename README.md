@@ -13,7 +13,7 @@ found it very convenient. In continuous development, we discovered our goal: to 
 
 ### Help & Documentation
 
-View on [GitBook](https://neoterm.gitbooks.io/neoterm-wiki/content)
+View on [GitBook](https://neoterm.gitbooks.hilled.pwnterm-wiki/content)
 
 View on [GitHub](https://github.com/NeoTerm/NeoTerm-Wiki)
 
@@ -21,4 +21,4 @@ View on [GitHub](https://github.com/NeoTerm/NeoTerm-Wiki)
 
 [GitHub Release Page](https://github.com/NeoTerm/NeoTerm/releases)
 
-[lzzySoft's F-Droid repo](https://apt.izzysoft.de/fdroid/index/apk/io.neoterm) (thanks to @lzzySoft)
+[lzzySoft's F-Droid repo](https://apt.izzysoft.de/fdroid/index/apk/hilled.pwnterm) (thanks to @lzzySoft)
