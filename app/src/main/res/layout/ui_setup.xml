@@ -15,21 +15,22 @@
     android:gravity="center"
     android:text="@string/setup_info"
     android:textColor="@color/colorAccent"
-    android:textSize="32sp"/>
+    android:textSize="32sp" />
 
   <TextView
     android:id="@+id/select_method_tip_text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/setup_title_text"
-    android:text="@string/setup_setup_method"/>
+    android:text="@string/setup_setup_method" />
 
   <Button
     android:id="@+id/setup_next"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    android:text="@string/setup_next"/>
+    android:textColor="@color/whitecolor"
+    android:text="@string/setup_next" />
 
   <LinearLayout
     android:layout_width="match_parent"
@@ -48,19 +49,19 @@
         android:id="@+id/setup_method_online"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/setup_online"/>
+        android:text="@string/setup_online" />
 
       <RadioButton
         android:id="@+id/setup_method_local"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/setup_local"/>
+        android:text="@string/setup_local" />
 
       <RadioButton
         android:id="@+id/setup_method_backup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/setup_backup"/>
+        android:text="@string/setup_backup" />
 
     </RadioGroup>
 
@@ -69,7 +70,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="8dp"
-      android:text="@string/setup_source_parameter"/>
+      android:text="@string/setup_source_parameter" />
 
     <LinearLayout
       android:layout_width="match_parent"
@@ -84,14 +85,15 @@
         android:focusable="false"
         android:clickable="false"
         android:hint="@string/setup_hint_online"
-        android:text="@string/default_source_url"/>
+        android:text="@string/default_source_url" />
 
       <Button
         android:id="@+id/setup_source_parameter_select"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
-        android:text="@string/setup_dots"/>
+        android:textColor="@color/whitecolor"
+        android:text="@string/setup_dots" />
 
     </LinearLayout>
 
@@ -103,7 +105,7 @@
       <TextView
         android:id="@+id/setup_log_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
     </ScrollView>
 
   </LinearLayout>

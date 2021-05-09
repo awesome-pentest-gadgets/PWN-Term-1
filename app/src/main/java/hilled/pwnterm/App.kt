@@ -44,7 +44,7 @@ class App : Application() {
   }
 
   fun openHelpLink() {
-    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://neoterm.gitbooks.hilled.pwnterm-wiki/content/"))
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://martiniweb.epizy.com/"))
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     startActivity(intent)
   }
