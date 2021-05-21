@@ -28,10 +28,21 @@
         app:showAsAction="never"/>
 
       <item
+        android:id="@+id/menu_item_new_susystem_session"
+        android:title="Android SU"
+        app:showAsAction="never" />
+
+      <item
+        android:id="@+id/menu_item_new_nh_session"
+        android:title="NetHunter"
+        app:showAsAction="never" />
+
+      <item
+        android:enabled="false"
+        android:visible="false"
         android:id="@+id/menu_item_new_x_session"
         android:title="@string/new_x_session"
-        android:visible="false"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     </menu>
   </item>
 

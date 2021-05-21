@@ -5,6 +5,7 @@ import hilled.pwnterm.component.config.ConfigureComponent
 import hilled.pwnterm.utils.NLog
 import java.io.File
 import java.io.FileFilter
+import kotlin.jvm.Throws
 
 interface ConfigFileBasedObject {
   @Throws(RuntimeException::class)

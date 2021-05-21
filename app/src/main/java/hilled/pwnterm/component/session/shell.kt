@@ -334,7 +334,14 @@ open class ShellTermSession private constructor(
       val androidRootEnv = "ANDROID_ROOT=" + System.getenv("ANDROID_ROOT")
       val androidDataEnv = "ANDROID_DATA=" + System.getenv("ANDROID_DATA")
       val externalStorageEnv = "EXTERNAL_STORAGE=" + System.getenv("EXTERNAL_STORAGE")
+      val bootclasspath = "BOOTCLASSPATH=" + System.getenv("BOOTCLASSPATH")
+      val androidartroot = "ANDROID_ART_ROOT=" + System.getenv("ANDROID_ART_ROOT")
+      val dex2oatbootclasspath = "DEX2OATBOOTCLASSPATH=" + System.getenv("DEX2OATBOOTCLASSPATH")
+      val androidi18nroot = "ANDROID_I18N_ROOT=" + System.getenv("ANDROID_I18N_ROOT")
+      val androidruntimeroot = "ANDROID_RUNTIME_ROOT=" + System.getenv("ANDROID_RUNTIME_ROOT")
+      val androidtzdata = "ANDROID_TZDATA_ROOT=" + System.getenv("ANDROID_TZDATA_ROOT")
       val colorterm = "COLORTERM=truecolor"
+
 
       // PY Trade: Some programs support NeoTerm in a special way.
       val neotermIdEnv = "__NEOTERM=1"
@@ -350,9 +357,8 @@ open class ShellTermSession private constructor(
         )
 
       } else {
-        val ps1Env = "PS1=$ "
         val langEnv = "LANG=en_US.UTF-8"
-        val pathEnv = "PATH=" + buildPathEnv()
+        val pathEnv = "PATH=" + buildPathEnv() + System.getenv("PATH")
         val ldEnv = "LD_LIBRARY_PATH=" + buildLdLibraryEnv()
         val pwdEnv = "PWD=$selectedCwd"
         val tmpdirEnv = "TMPDIR=${NeoTermPath.USR_PATH}/tmp"
@@ -365,11 +371,11 @@ open class ShellTermSession private constructor(
           ""
         }
 
-        arrayOf(
-          termEnv, homeEnv, ps1Env, ldEnv, langEnv, pathEnv, pwdEnv,
-          androidRootEnv, androidDataEnv, externalStorageEnv,
-          tmpdirEnv, neotermIdEnv, originPathEnv, originLdEnv,
-          ldPreloadEnv, prefixEnv, colorterm
+        arrayOf(termEnv, homeEnv, androidRootEnv, androidDataEnv,
+          externalStorageEnv, pathEnv, neotermIdEnv, prefixEnv,
+          originLdEnv, originPathEnv, bootclasspath, androidi18nroot, androidartroot,
+          dex2oatbootclasspath, androidruntimeroot, androidtzdata, colorterm,
+          tmpdirEnv, ldEnv, langEnv, ldPreloadEnv
         )
       }
         .filter { it.isNotEmpty() }
@@ -391,7 +397,7 @@ open class ShellTermSession private constructor(
     }
 
     private fun buildPathEnv(): String {
-      return "${NeoTermPath.USR_PATH}/bin:${NeoTermPath.USR_PATH}/bin/applets"
+      return "${NeoTermPath.USR_PATH}/bin:${NeoTermPath.USR_PATH}/sbin:"
     }
   }
 }

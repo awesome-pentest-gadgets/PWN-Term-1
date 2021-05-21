@@ -175,6 +175,14 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
         forceAddSystemSession()
         true
       }
+      R.id.menu_item_new_susystem_session -> {
+        addNewAndroidSUSession("Android SU")
+        true
+      }
+      R.id.menu_item_new_nh_session -> {
+        addNewNetHunterSession("NetHunter")
+        true
+      }
       R.id.menu_item_new_x_session -> {
         addXSession()
         true
@@ -489,6 +497,44 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     )
   }
 
+  private fun addNewAndroidSUSession(sessionName: String?) {
+    val sessionCallback = TermSessionCallback()
+    val viewClient = TermViewClient(this)
+
+    val parameter = ShellParameter()
+      .callback(sessionCallback)
+      .systemShell(false)
+      .executablePath("/data/data/hilled.pwnterm/files/home/.pwnterm/script/androidsu")
+    val session = termService!!.createTermSession(parameter)
+
+    session.mSessionName = sessionName ?: generateSessionName("Android SU")
+
+    val tab = createTab(session.mSessionName) as TermTab
+    tab.termData.initializeSessionWith(session, sessionCallback, viewClient)
+
+    addNewTab(tab, createRevealAnimation())
+    switchToSession(tab)
+  }
+
+  private fun addNewNetHunterSession(sessionName: String?) {
+    val sessionCallback = TermSessionCallback()
+    val viewClient = TermViewClient(this)
+
+    val parameter = ShellParameter()
+      .callback(sessionCallback)
+      .executablePath("/data/data/hilled.pwnterm/files/home/.pwnterm/script/nethunter")
+
+    val session = termService!!.createTermSession(parameter)
+
+    session.mSessionName = sessionName ?: generateSessionName("NetHunter")
+
+    val tab = createTab(session.mSessionName) as TermTab
+    tab.termData.initializeSessionWith(session, sessionCallback, viewClient)
+
+    addNewTab(tab, createRevealAnimation())
+    switchToSession(tab)
+  }
+
   private fun addNewSessionWithProfile(
     sessionName: String?, systemShell: Boolean,
     animation: Animation, profile: ShellProfile
@@ -502,7 +548,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
       .profile(profile)
     val session = termService!!.createTermSession(parameter)
 
-    session.mSessionName = sessionName ?: generateSessionName("NeoTerm")
+    session.mSessionName = sessionName ?: generateSessionName("PWN-Term")
 
     val tab = createTab(session.mSessionName) as TermTab
     tab.termData.initializeSessionWith(session, sessionCallback, viewClient)
@@ -626,11 +672,11 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
   }
 
   private fun createTab(tabTitle: String?): Tab {
-    return postTabCreated(TermTab(tabTitle ?: "NeoTerm"))
+    return postTabCreated(TermTab(tabTitle ?: "PWN-Term"))
   }
 
   private fun createXTab(tabTitle: String?): Tab {
-    return postTabCreated(XSessionTab(tabTitle ?: "NeoTerm"))
+    return postTabCreated(XSessionTab(tabTitle ?: "PWN-Term"))
   }
 
   private fun <T : NeoTab> postTabCreated(tab: T): T {
