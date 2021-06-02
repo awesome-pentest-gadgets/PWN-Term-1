@@ -1,4 +1,4 @@
 #!/bin/sh
 # Version: 1.0.1
-
-su -mm
+unset LD_PRELOAD
+su

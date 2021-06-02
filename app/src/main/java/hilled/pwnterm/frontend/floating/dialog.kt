@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.appcompat.app.AlertDialog
 import hilled.pwnterm.R
 import hilled.pwnterm.backend.TerminalSession
@@ -41,7 +42,7 @@ class TerminalDialog(val context: Context) {
       terminalSession?.finishIfRunning()
     }
 
-    dialog = AlertDialog.Builder(context)
+      dialog = MaterialAlertDialogBuilder(context)
       .setView(termWindowView.rootView)
       .setOnCancelListener {
         terminalSession?.finishIfRunning()
@@ -59,11 +60,6 @@ class TerminalDialog(val context: Context) {
       (terminalSession as ShellTermSession).exitPrompt = context.getString(R.string.process_exit_prompt_press_back)
     }
     termWindowView.attachSession(terminalSession)
-    return this
-  }
-
-  fun onDismiss(cancelListener: DialogInterface.OnCancelListener?): TerminalDialog {
-    this.cancelListener = cancelListener
     return this
   }
 
@@ -100,7 +96,7 @@ class WindowTermView(val context: Context) {
   @SuppressLint("InflateParams")
   var rootView: View = LayoutInflater.from(context).inflate(R.layout.ui_term_dialog, null, false)
     private set
-  var terminalView: TerminalView = rootView.findViewById<TerminalView>(R.id.terminal_view_dialog)
+  var terminalView: TerminalView = rootView.findViewById(R.id.terminal_view_dialog)
     private set
 
   init {

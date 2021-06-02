@@ -11,8 +11,8 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"/>
+    android:theme="@style/ThemeOverlay.AppCompat"
+    app:popupTheme="@style/ThemeOverlay.AppCompat"/>
 
   <include layout="@layout/layout_pm_package_list"/>
 

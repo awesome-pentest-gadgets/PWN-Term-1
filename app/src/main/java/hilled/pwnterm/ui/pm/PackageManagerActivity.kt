@@ -8,7 +8,7 @@ import android.view.MenuItem
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
@@ -49,7 +49,7 @@ class PackageManagerActivity : AppCompatActivity(), SearchView.OnQueryTextListen
     recyclerView.setHasFixedSize(true)
     adapter = PackageAdapter(this, comparator, object : PackageAdapter.Listener {
       override fun onModelClicked(model: PackageModel) {
-        AlertDialog.Builder(this@PackageManagerActivity)
+        MaterialAlertDialogBuilder(this@PackageManagerActivity, R.style.AlertDialog_material)
           .setTitle(model.packageInfo.packageName)
           .setMessage(model.getPackageDetails(this@PackageManagerActivity))
           .setPositiveButton(R.string.install) { _, _ ->
@@ -97,7 +97,7 @@ class PackageManagerActivity : AppCompatActivity(), SearchView.OnQueryTextListen
 
     val items = sourceList.map { "${it.url} :: ${it.repo}" }.toTypedArray()
     val selection = sourceList.map { it.enabled }.toBooleanArray()
-    AlertDialog.Builder(this)
+    MaterialAlertDialogBuilder(this, R.style.AlertDialog_material)
       .setTitle(R.string.pref_package_source)
       .setMultiChoiceItems(items, selection) { _, which, isChecked ->
         sourceList[which].enabled = isChecked
@@ -118,7 +118,7 @@ class PackageManagerActivity : AppCompatActivity(), SearchView.OnQueryTextListen
     val repoEditor = view.findViewById<EditText>(R.id.dialog_edit_text2_editor)
     repoEditor.setText("stable main")
 
-    AlertDialog.Builder(this)
+    MaterialAlertDialogBuilder(this, R.style.AlertDialog_material)
       .setTitle(R.string.pref_package_source)
       .setView(view)
       .setNegativeButton(android.R.string.no, null)
@@ -192,7 +192,7 @@ class PackageManagerActivity : AppCompatActivity(), SearchView.OnQueryTextListen
       .map {
         it to StringDistance.distance(mapper(it.packageInfo).toLowerCase(Locale.ROOT), query.toLowerCase(Locale.ROOT))
       }
-      .sortedWith { l, r -> r.second.compareTo(l.second) }
+      .sortedWith() { l, r -> r.second.compareTo(l.second) }
       .toList()
   }
 

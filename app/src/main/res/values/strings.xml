@@ -2,12 +2,14 @@
   <string name="app_name">PWN-Term</string>
   <string name="copy_text">Copy</string>
   <string name="paste_text">Paste</string>
-  <string name="super_paste_text">Super Paste</string>
-  <string name="text_selection_more">More</string>
+    <string name="text_selection_more">More</string>
 
   <string name="toggle_tab_switcher_menu_item">Toggle Tabs</string>
-  <string name="new_session">New Session</string>
-  <string name="new_session_more">New Session…</string>
+  <string name="new_session">PWN Session</string>
+  <string name="new_session_more">New Sessions…</string>
+  <string name="nethunter">NetHunter</string>
+  <string name="nethunter_session">NetHunter Session</string>
+  <string name="android_su">New SuperUser Shell</string>
   <string name="new_system_session">New System Shell</string>
   <string name="service_status_text">%d session(s), %d X session(s)</string>
   <string name="service_lock_acquired">(Wake Locked)</string>
@@ -28,9 +30,7 @@
   <string name="setup_hint_backup">File path to backup file(*.neobackup)</string>
   <string name="setup_error_file_not_found">File not found</string>
   <string name="setup_error_invalid_url">Invalid URL</string>
-  <string name="setup_error_no_internet">No Internet connection</string>
-  <string name="setup_error_connection_failed">Failed to connect to server</string>
-  <string name="setup_error_parameter_null">Setup parameter is null</string>
+    <string name="setup_error_parameter_null">Setup parameter is null</string>
   <string name="setup_preparing">Preparing…</string>
   <string name="setup_confirm">Finish Setup</string>
   <string name="setup_confirm_text">Everything goes well till now, continue?</string>
@@ -43,22 +43,17 @@
   <string name="general_settings_desc">Bell, Vibrate, Shell, Initial Command</string>
   <string name="ui_settings">UI Settings</string>
   <string name="ui_settings_desc">FullScreen, Title Bar, Animation</string>
-  <string name="package_settings">Package Settings</string>
+  <string name="package_settings">Package Manager</string>
   <string name="package_settings_desc">Source, Updates, Upgrades</string>
   <string name="customization_settings_desc">Font, ColorScheme</string>
   <string name="customization_settings">Customization</string>
 
-  <string name="toggle_ime">Toggle Keyboard</string>
-  <string name="float_up">Float Up</string>
-  <string name="shell_not_found">Shell %s not found</string>
+    <string name="shell_not_found">Shell %s not found</string>
   <string name="shell_not_found_message">Would you like you install it?</string>
-  <string name="fullscreen_mode_changed">FullScreen mode changed, please restart PWN-Term.</string>
-  <string name="permission_denied">PWN-Term cannot get essential permissions, exiting.</string>
+    <string name="permission_denied">PWN-Term cannot get essential permissions, exiting.</string>
   <string name="error">Oops!</string>
   <string name="use_system_shell">System Shell</string>
-  <string name="retry">Retry</string>
-  <string name="source_changed">APT source changed, you may get it updated by executing: apt update</string>
-  <string name="done">Done</string>
+    <string name="done">Done</string>
   <string name="install">Install</string>
   <string name="package_details">Package: %s\nVersion: %s\nDepends: %s\nInstalled Size: %s\nDescription: %s\nHome
     Page: %s
@@ -74,10 +69,8 @@
   <string name="crash_stack_trace">Stack Trace</string>
 
   <string name="installer_message">Installing</string>
-  <string name="installer_install_zsh_required">We will install oh-my-zsh and switch your login program to zsh
-  </string>
 
-  <string name="pref_general_bell">Bell</string>
+    <string name="pref_general_bell">Bell</string>
   <string name="pref_general_bell_desc">Bell when receiving \'\\a\'</string>
   <string name="pref_general_vibrate">Vibrate</string>
   <string name="pref_general_vibrate_desc">Vibrate when receiving \'\\a\'</string>
@@ -110,53 +103,30 @@
   <string name="pref_ui_eks_enabled_desc">Some useful keys like arrow, esc, tab, etc.</string>
   <string name="pref_customization_font">Font</string>
   <string name="pref_customization_color_scheme">Color Scheme</string>
-  <string name="pref_customization_eks">Extra Keys</string>
-  <string name="pref_package_source">Source</string>
+    <string name="pref_package_source">Source</string>
 
   <string name="exit">Exit</string>
   <string name="term_here">Term Here</string>
   <string name="user_script">User Script</string>
-  <string name="command_shortcut">Command Shortcut</string>
-  <string name="no_user_script_found">No user script found (Did you forget to set executable permissions?)</string>
+    <string name="no_user_script_found">No user script found (Did you forget to set executable permissions?)</string>
   <string name="no_files_selected">No files selected\n\n(raw Intent: %s)</string>
   <string name="unsupported_term_here">Unsupported term here\n\n(raw Intent: %s)</string>
   <string name="files_to_handle">Files to Handle</string>
   <string name="available_user_scripts">Available User Scripts</string>
   <string name="confirm_remove_file_from_list">Remove file from list?</string>
-  <string name="confirm_remove">Remove?</string>
-  <string name="command_shortcut_display_title">Title</string>
-  <string name="command_shortcut_command">Command</string>
-  <string name="no_command_extra">No command provided, did you put extras?</string>
-  <string name="command_display_title_cannot_be_null">Display title cannot be null</string>
-  <string name="menu_upgrade">Upgrade</string>
-  <string name="apt_update_ok">Package list successfully updated</string>
-  <string name="apt_upgrade_ok">Package successfully upgraded</string>
-  <string name="installing_topic">Installation started. Please pay attention to the prompt that appears on the
-    screen
-  </string>
-  <string name="session_closed">Session was closed</string>
-  <string name="restore_session">Cancel</string>
-  <string name="show_help">Show Help</string>
+    <string name="no_command_extra">No command provided, did you put extras?</string>
+    <string name="menu_upgrade">Upgrade</string>
+    <string name="apt_upgrade_ok">Package successfully upgraded</string>
+    <string name="show_help">Show Help</string>
   <string name="service_connection_failed">Failed to connect to service</string>
   <string name="about_version_label">Version</string>
-  <string name="about_developers_label">Developers &amp; Contributors</string>
-  <string name="about_libraries_label">Libraries</string>
+    <string name="about_libraries_label">Libraries</string>
   <string name="about_source_label">Source Code</string>
   <string name="about_reset_label">Reset App</string>
   <string name="about_reset_label_desc">Clear all files except user home directory</string>
   <string name="support_donate_label">Donate</string>
-  <string name="support_donate_description">If you like this app, you can offer developers a cup of coffee</string>
-  <string name="support_donate_dialog_text">This app is made in my spare time. Not only me needs to develop app, but
-    also maintains various software packages and servers. If you can support me, I will be more motivated to improve
-    this app.
-  </string>
-  <string name="support_donate_alipay">Alipay</string>
-  <string name="about_developers">Kiva for Maintaining\nCrixec for Icon Design\nCoolApk User @NimaQu for providing
-    server\nQQ User @My for providing free network
-  </string>
-  <string name="new_color_scheme">New Color Scheme</string>
-  <string name="faq">FAQ</string>
-  <string name="new_source">New</string>
+    <string name="new_color_scheme">New Color Scheme</string>
+    <string name="new_source">New</string>
   <string name="process_exit_info">Process completed</string>
   <string name="process_exit_code">code %d</string>
   <string name="process_exit_signal">signal %d</string>
@@ -169,8 +139,7 @@
   <string name="save">Save</string>
   <string name="select_new_value">Select</string>
   <string name="input_new_value">Enter new color</string>
-  <string name="toggle_eks">Toggle extra keys</string>
-  <string name="new_x_session">New X Session</string>
+    <string name="new_x_session">New X Session</string>
   <string name="new_session_with_profile">New Session With Profile</string>
   <string name="no_profile_available">No profile available</string>
   <string name="no_file_picker">No file picker found</string>

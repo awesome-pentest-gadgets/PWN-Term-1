@@ -1,18 +1,66 @@
 <resources>
 
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+  <style name="AppTheme" parent="Theme.MaterialComponents">
     <item name="colorAccent">#4285F4</item>
-    <item name="colorPrimary">@color/ic_launcher_background</item>
-    <item name="colorPrimaryDark">@color/ic_launcher_background</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimary</item>
+    <item name="colorBackgroundFloating">@color/list_download_item_color_dark</item>
+    <item name="android:windowBackground">@color/list_download_item_color_dark</item>
+
     <item name="windowActionModeOverlay">true</item>
+    <item name="android:textColor">@color/whitecolor</item>
+    <item name="actionMenuTextColor">@color/whitecolor</item>
+
+    <item name="materialAlertDialogTheme">@style/AlertDialog_material</item>
+
   </style>
 
-  <style name="AppTheme.Dark" parent="Theme.MaterialComponents.DayNight">
+  <style name="PWN_NoActionBar" parent="Theme.MaterialComponents.NoActionBar">
     <item name="colorAccent">#4285F4</item>
-    <item name="windowActionModeOverlay">true</item>
-    <item name="colorPrimary">@color/ic_launcher_background</item>
-    <item name="colorPrimaryDark">@color/ic_launcher_background</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimary</item>
+    <item name="colorBackgroundFloating">@color/colorPrimary</item>
+    <item name="android:windowBackground">@color/colorPrimary</item>
+  </style>
+
+  <style name="AlertDialog_material" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+    <!-- Color stuff-->
+    <item name="background">@color/list_download_item_color_dark</item>
+    <item name="colorAccent">#FFFFFF</item>
+    <item name="android:textColor">#FFFFFF</item>
+    <item name="actionMenuTextColor">@color/whitecolor</item>
+    <item name="actionButtonStyle">@style/Widget.MaterialComponents.FloatingActionButton</item>
+
+    <!-- Button styles-->
+    <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+    <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    <item name="buttonBarNeutralButtonStyle">@style/NeutralButtonStyle</item>
+  </style>
+
+  <!-- Alert dialog button styles go here-->
+  <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+    <item name="android:textColor">#FFFFFF</item>
+    <item name="android:textColorPrimary">#FFFFFF</item>
+    <item name="android:colorAccent">#FFFFFF</item>
+
+  </style>
+
+  <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+    <item name="android:textColor">#FFFFFF</item>
+    <item name="android:textColorPrimary">#FFFFFF</item>
+    <item name="android:colorAccent">#FFFFFF</item>
+  </style>
+
+  <style name="NeutralButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+    <item name="android:textColor">#FFFFFF</item>
+    <item name="android:textColorPrimary">#FFFFFF</item>
+    <item name="android:colorAccent">#FFFFFF</item>
+
+  </style>
+
+  <style name="AppTheme.Dark" parent="@style/AppTheme">
+
   </style>
 
   <style name="AppTheme.NoActionBar" parent="@style/AppTheme">
@@ -24,10 +72,6 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
-
-  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.ActionBar" />
-
-  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
   <style name="rtl_RecyclerTabLayout">
     <item name="rtl_tabMinWidth">72dp</item>

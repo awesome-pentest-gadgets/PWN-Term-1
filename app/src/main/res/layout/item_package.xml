@@ -3,13 +3,13 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:background="?attr/selectableItemBackground"
+              android:background="@color/layoutcolor"
               android:clickable="true"
               android:focusable="true"
               android:orientation="vertical"
               android:padding="@dimen/package_item_padding">
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
     android:id="@+id/package_item_name"
     style="@style/TextAppearance.AppCompat.Large"
     android:layout_width="match_parent"
@@ -18,7 +18,7 @@
     android:textColor="@color/textColor"
     tools:text="Package Name"/>
 
-  <TextView
+  <com.google.android.material.textview.MaterialTextView
     android:id="@+id/package_item_desc"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical"
-              tools:ignore="UseCompoundDrawables,ContentDescription">
+              android:layout_height="fill_parent"
+              android:background="@color/list_download_item_color_dark"
+              android:orientation="vertical">
 
-  <androidx.appcompat.widget.Toolbar
+  <com.google.android.material.appbar.MaterialToolbar
     android:id="@+id/about_toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPrimary"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"/>
+    android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
 
   <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/list_download_item_color_dark"
     android:padding="8dp">
 
     <LinearLayout
@@ -26,12 +24,12 @@
       android:layout_height="wrap_content"
       android:orientation="vertical">
 
-      <androidx.cardview.widget.CardView
+      <com.google.android.material.card.MaterialCardView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
-        app:cardBackgroundColor="@color/list_download_item_color_dark"
+        app:cardBackgroundColor="@color/layoutcolor"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
@@ -203,14 +201,14 @@
 
         </LinearLayout>
 
-      </androidx.cardview.widget.CardView>
+      </com.google.android.material.card.MaterialCardView>
 
-      <androidx.cardview.widget.CardView
+      <com.google.android.material.card.MaterialCardView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
-        app:cardBackgroundColor="@color/list_download_item_color_dark"
+        app:cardBackgroundColor="@color/layoutcolor"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
@@ -286,7 +284,7 @@
           </LinearLayout>
         </LinearLayout>
 
-      </androidx.cardview.widget.CardView>
+      </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
   </ScrollView>

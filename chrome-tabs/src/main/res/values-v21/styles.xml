@@ -15,7 +15,7 @@ License.
 -->
 <resources>
 
-  <style name="Tab.Title" parent="@style/TextAppearance.AppCompat.Small">
+  <style name="Tab.Title" parent="@style/TextAppearance.MaterialComponents.Body1">
     <item name="android:drawablePadding">@dimen/tab_title_drawable_padding</item>
     <item name="android:ellipsize">marquee</item>
     <item name="android:maxLines">1</item>

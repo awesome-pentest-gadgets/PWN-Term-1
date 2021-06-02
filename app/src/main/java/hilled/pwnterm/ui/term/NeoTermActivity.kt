@@ -11,13 +11,14 @@ import android.preference.PreferenceManager
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat
+import hilled.pwnterm.utils.extractAssetsDir
 import de.mrapp.android.tabswitcher.*
 import hilled.pwnterm.App
 import hilled.pwnterm.BuildConfig
@@ -25,6 +26,7 @@ import hilled.pwnterm.R
 import hilled.pwnterm.backend.TerminalSession
 import hilled.pwnterm.component.ComponentManager
 import hilled.pwnterm.component.config.NeoPreference
+import hilled.pwnterm.component.config.NeoTermPath
 import hilled.pwnterm.component.profile.ProfileComponent
 import hilled.pwnterm.component.session.ShellParameter
 import hilled.pwnterm.component.session.ShellProfile
@@ -39,6 +41,7 @@ import hilled.pwnterm.ui.settings.SettingActivity
 import hilled.pwnterm.utils.FullScreenHelper
 import hilled.pwnterm.utils.NeoPermission
 import hilled.pwnterm.utils.RangedInt
+import hilled.pwnterm.utils.Terminals
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -48,6 +51,15 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
   companion object {
     const val KEY_NO_RESTORE = "no_restore"
     const val REQUEST_SETUP = 22313
+  }
+
+  fun pwnrestore() {
+    // Restore scripts if one of those has been deleted
+    extractAssetsDir( "colors", NeoTermPath.COLORS_PATH)
+    extractAssetsDir( "eks", NeoTermPath.EKS_PATH)
+    extractAssetsDir( "fonts", NeoTermPath.FONT_PATH)
+    extractAssetsDir( "scripts", NeoTermPath.USER_SCRIPT_PATH)
+    extractAssetsDir( "profile", NeoTermPath.PROFILE_PATH)
   }
 
   lateinit var tabSwitcher: TabSwitcher
@@ -84,7 +96,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     }
 
     setContentView(R.layout.ui_main)
-
+    pwnrestore()
     toolbar = findViewById(R.id.terminal_toolbar)
     setSupportActionBar(toolbar)
 
@@ -302,12 +314,13 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
   }
 
   override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     when (requestCode) {
       NeoPermission.REQUEST_APP_PERMISSION -> {
         if (grantResults.isEmpty()
           || grantResults[0] != PackageManager.PERMISSION_GRANTED
         ) {
-          AlertDialog.Builder(this).setMessage(R.string.permission_denied)
+          MaterialAlertDialogBuilder(this).setMessage(R.string.permission_denied)
             .setPositiveButton(android.R.string.ok, { _: DialogInterface, _: Int ->
               finish()
             })
@@ -464,7 +477,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     val profilesShell = profiles.filterIsInstance<ShellProfile>()
 
     if (profiles.isEmpty()) {
-      AlertDialog.Builder(this)
+      MaterialAlertDialogBuilder(this)
         .setTitle(R.string.error)
         .setMessage(R.string.no_profile_available)
         .setPositiveButton(android.R.string.yes, null)
@@ -472,7 +485,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
       return
     }
 
-    AlertDialog.Builder(this)
+    MaterialAlertDialogBuilder(this)
       .setTitle(R.string.new_session_with_profile)
       .setItems(profiles.map { it.profileName }.toTypedArray(), { dialog, which ->
         val selectedProfile = profilesShell[which]
@@ -503,7 +516,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
 
     val parameter = ShellParameter()
       .callback(sessionCallback)
-      .systemShell(false)
+      .systemShell(true)
       .executablePath("/data/data/hilled.pwnterm/files/home/.pwnterm/script/androidsu")
     val session = termService!!.createTermSession(parameter)
 
@@ -582,7 +595,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
 
   private fun addXSession() {
     if (!BuildConfig.DEBUG) {
-      AlertDialog.Builder(this)
+      MaterialAlertDialogBuilder(this)
         .setTitle(R.string.error)
         .setMessage(R.string.sorry_for_development)
         .setPositiveButton(android.R.string.yes, null)

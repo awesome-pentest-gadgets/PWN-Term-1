@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hilled.pwnterm.frontend.completion.MaxHeightView xmlns:android="http://schemas.android.com/apk/res/android"
-                                              android:layout_width="match_parent"
-                                              android:layout_height="match_parent"
-                                              android:background="@color/popup_background"
-                                              android:orientation="vertical">
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/layoutcolor"
+  android:orientation="vertical">
 
   <ListView
     android:id="@+id/popup_complete_candidate_list"

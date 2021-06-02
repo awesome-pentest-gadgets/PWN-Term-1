@@ -38,7 +38,7 @@ public class NeoPackageParser {
     KEY_HOMEPAGE = "Homepage",
     KEY_DESC = "Description";
 
-  private BufferedReader reader;
+  private final BufferedReader reader;
   private ParseStateListener stateListener;
 
   NeoPackageParser(InputStream inputStream) {
@@ -149,12 +149,10 @@ public class NeoPackageParser {
 
   private String appendToLastValue(NeoPackageInfo packageInfo, String key, String value) {
     // Currently, only descriptions can be multiline
-    switch (key) {
-      case KEY_DESC:
-        return packageInfo.getDescription() + " " + value;
-      default:
-        return value;
+    if (KEY_DESC.equals(key)) {
+      return packageInfo.getDescription() + " " + value;
     }
+    return value;
   }
 
   private boolean splitKeyAndValue(String line, String[] splits) {

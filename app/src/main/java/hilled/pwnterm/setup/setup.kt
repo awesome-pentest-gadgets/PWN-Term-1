@@ -39,6 +39,7 @@ object SetupHelper {
     val prefixFile = File(NeoTermPath.USR_PATH)
 
     val progress = makeProgressDialog(activity)
+    progress.setCancelable(false)
     progress.max = 100
     progress.show()
 

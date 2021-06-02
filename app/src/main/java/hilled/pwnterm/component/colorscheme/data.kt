@@ -11,6 +11,7 @@ import hilled.pwnterm.component.codegen.NeoColorGenerator
 import hilled.pwnterm.frontend.session.view.TerminalView
 import hilled.pwnterm.frontend.session.view.extrakey.ExtraKeysView
 import hilled.pwnterm.utils.NLog
+import kotlin.jvm.Throws
 
 open class NeoColorScheme : CodeGenObject, ConfigFileBasedObject {
   companion object {

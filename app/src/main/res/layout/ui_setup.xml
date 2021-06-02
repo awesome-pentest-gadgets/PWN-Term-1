@@ -30,6 +30,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:textColor="@color/whitecolor"
+    android:backgroundTint="@color/list_download_item_color_dark"
     android:text="@string/setup_next" />
 
   <LinearLayout
@@ -93,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
         android:textColor="@color/whitecolor"
+        android:backgroundTint="@color/list_download_item_color_dark"
         android:text="@string/setup_dots" />
 
     </LinearLayout>

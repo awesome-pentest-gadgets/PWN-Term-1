@@ -1,5 +1,6 @@
 package hilled.pwnterm.ui.other
 
+import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -7,8 +8,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialDialogs
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import hilled.pwnterm.App
 import hilled.pwnterm.R
 import hilled.pwnterm.component.config.NeoTermPath
@@ -119,6 +121,7 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
     }.start()
   }
 
+  @SuppressLint("RestrictedApi")
   private fun doSelectParameter() {
     val id = findViewById<RadioGroup>(R.id.setup_method_group).checkedRadioButtonId
     when (id) {
@@ -142,7 +145,7 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
 
         val edit = view.findViewById<EditText>(R.id.dialog_edit_text_editor)
 
-        AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder(this, R.style.AlertDialog_material)
           .setTitle(R.string.new_source)
           .setView(view)
           .setPositiveButton(android.R.string.yes) { _, _ ->
@@ -192,7 +195,7 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
     val titleId = if (needSetup) R.string.setup_confirm else R.string.setup_reset_confirm
     val messageId = if (needSetup) R.string.setup_confirm_text else R.string.setup_reset_confirm_text
 
-    AlertDialog.Builder(this)
+    MaterialAlertDialogBuilder(this, R.style.AlertDialog_material)
       .setTitle(titleId)
       .setMessage(messageId)
       .setPositiveButton(android.R.string.yes) { _, _ ->
@@ -213,7 +216,7 @@ class SetupActivity : AppCompatActivity(), View.OnClickListener, ResultListener 
       executeAptUpdate()
 
     } else {
-      AlertDialog.Builder(this)
+      MaterialAlertDialogBuilder(this, R.style.AlertDialog_material)
         .setTitle(R.string.error)
         .setMessage(error.toString())
         .setNegativeButton(R.string.use_system_shell) { _, _ ->

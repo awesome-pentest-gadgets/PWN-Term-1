@@ -3,7 +3,7 @@ package hilled.pwnterm.component.config
 import android.annotation.SuppressLint
 
 object DefaultValues {
-  const val fontSize = 30
+  const val fontSize = 25
 
   const val enableBell = false
   const val enableVibrate = false

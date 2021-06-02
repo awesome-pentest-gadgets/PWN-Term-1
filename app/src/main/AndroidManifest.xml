@@ -34,7 +34,7 @@
       android:name=".ui.term.NeoTermActivity"
       android:configChanges="orientation|keyboardHidden|screenSize"
       android:launchMode="singleTask"
-      android:theme="@style/AppTheme.NoActionBar.Dark"
+      android:theme="@style/PWN_NoActionBar"
       android:windowSoftInputMode="adjustResize|stateHidden">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -53,7 +53,8 @@
 
     <activity-alias
       android:name=".NeoLotMainActivity"
-      android:targetActivity="hilled.pwnterm.ui.term.NeoTermActivity">
+      android:targetActivity="hilled.pwnterm.ui.term.NeoTermActivity"
+      android:theme="@style/AppTheme">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -66,7 +67,7 @@
       android:name=".ui.term.NeoTermRemoteInterface"
       android:configChanges="orientation|keyboardHidden"
       android:exported="true"
-      android:theme="@style/AppTheme.Dark"
+      android:theme="@style/PWN_NoActionBar"
       android:windowSoftInputMode="adjustResize|stateHidden">
       <intent-filter>
         <category android:name="android.intent.category.DEFAULT"/>
@@ -128,49 +129,49 @@
       android:name=".ui.other.AboutActivity"
       android:exported="false"
       android:label="@string/about"
-      android:theme="@style/AppTheme.NoActionBar.Dark"/>
+      android:theme="@style/PWN_NoActionBar"/>
     <activity
       android:name=".ui.other.CrashActivity"
       android:exported="false"
       android:label="@string/error"
-      android:theme="@style/AppTheme.NoActionBar.Dark"/>
+      android:theme="@style/PWN_NoActionBar"/>
     <activity
       android:name=".ui.other.SetupActivity"
       android:configChanges="keyboardHidden|orientation|screenSize"
       android:exported="true"
-      android:theme="@style/AppTheme.NoActionBar"/>
+      android:theme="@style/PWN_NoActionBar"/>
     <activity
       android:name=".ui.other.BonusActivity"
       android:configChanges="orientation|keyboardHidden"
       android:exported="false"
-      android:theme="@style/AppTheme.NoActionBar.Dark"/>
+      android:theme="@style/PWN_NoActionBar"/>
     <activity
       android:name=".ui.pm.PackageManagerActivity"
       android:exported="false"
       android:label="@string/package_settings"
-      android:theme="@style/AppTheme.NoActionBar.Dark"/>
+      android:theme="@style/PWN_NoActionBar"/>
     <activity
       android:name=".ui.customize.CustomizeActivity"
       android:exported="false"
       android:label="@string/customization_settings"
-      android:theme="@style/AppTheme.NoActionBar.Dark"/>
+      android:theme="@style/PWN_NoActionBar"/>
     <activity
       android:name=".ui.customize.ColorSchemeActivity"
       android:exported="false"
       android:label="@string/pref_customization_color_scheme"
-      android:theme="@style/AppTheme.NoActionBar.Dark"/>
+      android:theme="@style/PWN_NoActionBar"/>
     <activity
       android:name=".ui.settings.SettingActivity"
       android:exported="false"
-      android:theme="@style/AppTheme.Dark"/>
+      android:theme="@style/AppTheme"/>
     <activity
       android:name=".ui.settings.GeneralSettingsActivity"
       android:exported="false"
-      android:theme="@style/AppTheme.Dark"/>
+      android:theme="@style/AppTheme"/>
     <activity
       android:name=".ui.settings.UISettingsActivity"
       android:exported="false"
-      android:theme="@style/AppTheme.Dark"/>
+      android:theme="@style/AppTheme"/>
 
     <service
       android:name=".services.NeoTermService"
