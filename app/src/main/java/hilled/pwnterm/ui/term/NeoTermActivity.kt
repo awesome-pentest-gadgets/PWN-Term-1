@@ -1,6 +1,7 @@
 package hilled.pwnterm.ui.term
 
 import android.Manifest
+import android.app.Activity
 import android.content.*
 import android.content.pm.PackageManager
 import android.content.res.Configuration
@@ -11,6 +12,7 @@ import android.preference.PreferenceManager
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
+import android.widget.Toast
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -54,7 +56,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
   }
 
   fun pwnrestore() {
-    // Restore scripts if one of those has been deleted
+    // Restore scripts if one of those has been deleted (In case if user removed these manually for some reason)
     extractAssetsDir( "colors", NeoTermPath.COLORS_PATH)
     extractAssetsDir( "eks", NeoTermPath.EKS_PATH)
     extractAssetsDir( "fonts", NeoTermPath.FONT_PATH)
@@ -96,7 +98,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     }
 
     setContentView(R.layout.ui_main)
-    pwnrestore()
+    //pwnrestore()
     toolbar = findViewById(R.id.terminal_toolbar)
     setSupportActionBar(toolbar)
 
@@ -108,6 +110,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
           // isShow -> toolbarHide
           toggleToolbar(tab.toolbar, !isShow)
         }
+        update_colors()
       }
     })
 
@@ -150,7 +153,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.menu_main, menu)
 
-    TabSwitcher.setupWithMenu(tabSwitcher, toolbar.menu, {
+    TabSwitcher.setupWithMenu(tabSwitcher, toolbar.menu) {
       if (!tabSwitcher.isSwitcherShown) {
         val imm = this@NeoTermActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         if (imm.isActive && tabSwitcher.selectedTab is TermTab) {
@@ -161,7 +164,7 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
       } else {
         toggleSwitcher(showSwitcher = false, easterEgg = true)
       }
-    })
+    }
     return true
   }
 
@@ -195,12 +198,63 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
         addNewNetHunterSession("NetHunter")
         true
       }
+      R.id.menu_item_kill_nh_session -> {
+        killNetHunterSession("NetHunter Killer")
+        true
+      }
+      R.id.menu_item_new_pwn_root_session -> {
+        addNewPwnRootSession("PWN-Root")
+        true
+      }
+      R.id.script_upgrade -> {
+        doscriptupgrade()
+        true
+      }
       R.id.menu_item_new_x_session -> {
         addXSession()
         true
       }
       else -> super.onOptionsItemSelected(item)
     }
+  }
+
+  fun doscriptupgrade() {
+    removeoldscripts()
+    Thread.sleep(1_000)  // wait for 1 second
+    extractnewscripts()
+    Thread.sleep(1_000)  // wait for 1 second
+    // Chmod every script
+    val chmodscript = Runtime.getRuntime().exec("chmod +x /data/data/hilled.pwnterm/files/home/.pwnterm/script/androidsu")
+    chmodscript.waitFor()
+    val chmodscript1 = Runtime.getRuntime().exec("chmod +x /data/data/hilled.pwnterm/files/home/.pwnterm/script/busybox")
+    chmodscript1.waitFor()
+    val chmodscript2 = Runtime.getRuntime().exec("chmod +x /data/data/hilled.pwnterm/files/home/.pwnterm/script/kill-nh")
+    chmodscript2.waitFor()
+    val chmodscript3 = Runtime.getRuntime().exec("chmod +x /data/data/hilled.pwnterm/files/home/.pwnterm/script/nethunter")
+    chmodscript3.waitFor()
+    Toast.makeText(this, "Done...", Toast.LENGTH_SHORT).show()
+  }
+
+  fun removeoldscripts() {
+    val rmscript = Runtime.getRuntime().exec("rm -rf /data/data/hilled.pwnterm/files/home/.pwnterm/script")
+    rmscript.waitFor()
+    Thread.sleep(1_000)  // wait for 1 second
+    val rmcolor = Runtime.getRuntime().exec("rm -rf /data/data/hilled.pwnterm/files/home/.pwnterm/color")
+    rmcolor.waitFor()
+    Thread.sleep(1_000)  // wait for 1 second
+    val rmfont = Runtime.getRuntime().exec("rm -rf /data/data/hilled.pwnterm/files/home/.pwnterm/font")
+    rmfont.waitFor()
+    Thread.sleep(1_000)  // wait for 1 second
+  }
+
+  fun extractnewscripts() {
+    extractAssetsDir( "scripts", NeoTermPath.USER_SCRIPT_PATH)
+    Thread.sleep(1_000)  // wait for 1 second
+    extractAssetsDir( "colors", NeoTermPath.COLORS_PATH)
+    Thread.sleep(1_000)  // wait for 1 second
+    extractAssetsDir( "fonts", NeoTermPath.FONT_PATH)
+    Thread.sleep(1_000)  // wait for 1 second
+
   }
 
   override fun onPause() {
@@ -372,8 +426,8 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     when (requestCode) {
       REQUEST_SETUP -> {
         when (resultCode) {
-          AppCompatActivity.RESULT_OK -> enterMain()
-          AppCompatActivity.RESULT_CANCELED -> {
+            Activity.RESULT_OK -> enterMain()
+            Activity.RESULT_CANCELED -> {
             setSystemShellMode(true)
             forceAddSystemSession()
           }
@@ -487,10 +541,10 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
 
     MaterialAlertDialogBuilder(this)
       .setTitle(R.string.new_session_with_profile)
-      .setItems(profiles.map { it.profileName }.toTypedArray(), { dialog, which ->
+      .setItems(profiles.map { it.profileName }.toTypedArray()) { dialog, which ->
         val selectedProfile = profilesShell[which]
         addNewSessionWithProfile(selectedProfile)
-      })
+      }
       .setPositiveButton(android.R.string.no, null)
       .show()
   }
@@ -535,7 +589,47 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
 
     val parameter = ShellParameter()
       .callback(sessionCallback)
+      .systemShell(false)
       .executablePath("/data/data/hilled.pwnterm/files/home/.pwnterm/script/nethunter")
+
+    val session = termService!!.createTermSession(parameter)
+
+    session.mSessionName = sessionName ?: generateSessionName("NetHunter")
+
+    val tab = createTab(session.mSessionName) as TermTab
+    tab.termData.initializeSessionWith(session, sessionCallback, viewClient)
+
+    addNewTab(tab, createRevealAnimation())
+    switchToSession(tab)
+  }
+
+  private fun killNetHunterSession(sessionName: String?) {
+    val sessionCallback = TermSessionCallback()
+    val viewClient = TermViewClient(this)
+
+    val parameter = ShellParameter()
+      .callback(sessionCallback)
+      .systemShell(false)
+      .executablePath("/data/data/hilled.pwnterm/files/home/.pwnterm/script/kill-nh")
+
+    val session = termService!!.createTermSession(parameter)
+
+    session.mSessionName = sessionName ?: generateSessionName("NetHunter Killer")
+
+    val tab = createTab(session.mSessionName) as TermTab
+    tab.termData.initializeSessionWith(session, sessionCallback, viewClient)
+
+    addNewTab(tab, createRevealAnimation())
+    switchToSession(tab)
+  }
+
+  private fun addNewPwnRootSession(sessionName: String?) {
+    val sessionCallback = TermSessionCallback()
+    val viewClient = TermViewClient(this)
+
+    val parameter = ShellParameter()
+      .callback(sessionCallback)
+      .executablePath("/data/data/hilled.pwnterm/files/home/.pwnterm/script/pwn-chroot")
 
     val session = termService!!.createTermSession(parameter)
 

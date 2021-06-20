@@ -3,7 +3,7 @@ package hilled.pwnterm.setup;
 import android.app.ProgressDialog;
 import android.system.Os;
 import android.util.Pair;
-import androidx.appcompat.app.AppCompatActivity;
+import android.app.Activity;
 import hilled.pwnterm.backend.EmulatorDebug;
 import hilled.pwnterm.component.config.NeoTermPath;
 import hilled.pwnterm.utils.NLog;
@@ -21,11 +21,11 @@ import java.util.zip.ZipInputStream;
 final class SetupThread extends Thread {
   private final SourceConnection sourceConnection;
   private final File prefixPath;
-  private final AppCompatActivity activity;
+  private final Activity activity;
   private final ResultListener resultListener;
   private final ProgressDialog progressDialog;
 
-  public SetupThread(AppCompatActivity activity, SourceConnection sourceConnection,
+  public SetupThread(Activity activity, SourceConnection sourceConnection,
                      File prefixPath, ResultListener resultListener,
                      ProgressDialog progressDialog) {
     this.activity = activity;

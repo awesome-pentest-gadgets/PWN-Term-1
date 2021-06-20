@@ -138,8 +138,10 @@ class NeoTermService : Service() {
     val pendingIntent = PendingIntent.getActivity(this, 0, notifyIntent, 0)
 
     val sessionCount = mTerminalSessions.size
+    // Null as XSession has been disabled due to not functioning as needed (Also not experienced enough to work on it)
     val xSessionCount = mXSessions.size
-    var contentText = getString(R.string.service_status_text, sessionCount, xSessionCount)
+
+    var contentText = getString(R.string.service_status_text, sessionCount)
 
     val lockAcquired = mWakeLock != null
     if (lockAcquired) contentText += getString(R.string.service_lock_acquired)
@@ -158,7 +160,7 @@ class NeoTermService : Service() {
     val exitIntent = Intent(this, NeoTermService::class.java).setAction(ACTION_SERVICE_STOP)
     builder.addAction(
       android.R.drawable.ic_delete,
-      getString(R.string.exit),
+      getString(R.string.kill),
       PendingIntent.getService(this, 0, exitIntent, 0)
     )
 

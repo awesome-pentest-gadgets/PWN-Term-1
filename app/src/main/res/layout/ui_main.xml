@@ -13,7 +13,7 @@
     android:background="@color/colorPrimary"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:visibility="visible"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"/>
+    app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"/>
 
 
   <de.mrapp.android.tabswitcher.TabSwitcher

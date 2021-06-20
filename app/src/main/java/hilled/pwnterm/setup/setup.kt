@@ -3,8 +3,9 @@ package hilled.pwnterm.setup
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.Build
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import android.app.Activity
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import hilled.pwnterm.App
 import hilled.pwnterm.R
 import hilled.pwnterm.component.config.NeoTermPath
@@ -28,7 +29,7 @@ object SetupHelper {
   }
 
   fun setup(
-    activity: AppCompatActivity, connection: SourceConnection,
+    activity: Activity, connection: SourceConnection,
     resultListener: ResultListener
   ) {
     if (!needSetup()) {
@@ -40,6 +41,7 @@ object SetupHelper {
 
     val progress = makeProgressDialog(activity)
     progress.setCancelable(false)
+    progress.setProgressStyle(R.style.ProgressDialog)
     progress.max = 100
     progress.show()
 
@@ -51,7 +53,7 @@ object SetupHelper {
   }
 
   fun makeProgressDialog(context: Context, message: String): ProgressDialog {
-    val dialog = ProgressDialog(context)
+    val dialog = ProgressDialog(context, R.style.ProgressDialog)
     dialog.setMessage(message)
     dialog.isIndeterminate = false
     dialog.setCancelable(false)
@@ -64,7 +66,7 @@ object SetupHelper {
   }
 
   fun makeErrorDialog(context: Context, message: String): AlertDialog {
-    return AlertDialog.Builder(context)
+    return MaterialAlertDialogBuilder(context)
       .setTitle(R.string.error)
       .setMessage(message)
       .setPositiveButton(android.R.string.yes, null)

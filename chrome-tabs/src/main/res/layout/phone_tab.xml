@@ -43,7 +43,8 @@ License.
       android:layout_gravity="center_vertical"
       android:background="?attr/selectableItemBackgroundBorderless"
       android:contentDescription="@null"
-      app:srcCompat="@drawable/phone_close_tab_icon"/>
+      android:src="@drawable/ic_close_icon"
+      app:tint="@color/tab_title_text_color"/>
 
   </LinearLayout>
 

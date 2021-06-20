@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "hilled.pwnterm",
+  "variantName": "processDebugResources",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 222,
+      "versionName": "2.2.3-pre_release",
+      "outputFile": "app-debug.apk"
+    }
+  ]
+}

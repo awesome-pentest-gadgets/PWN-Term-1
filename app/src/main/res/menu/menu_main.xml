@@ -15,8 +15,10 @@
 
   <item
     android:title="@string/new_session_more"
+    android:id="@+id/sessions_menu"
     app:showAsAction="never">
     <menu>
+
       <item
         android:id="@+id/menu_item_new_session_with_profile"
         android:title="@string/new_session_with_profile"
@@ -33,20 +35,37 @@
         app:showAsAction="never" />
 
       <item
+        android:title="@string/pwn_root"
+        android:visible="false"
+        app:showAsAction="never">
+        <menu>
+          <item
+            android:id="@+id/menu_item_new_pwn_root_session"
+            android:title="@string/pwn_root_session"
+            app:showAsAction="never" />
+        </menu>
+      </item>
+
+      <item
+        android:title="@string/nethunter"
+        app:showAsAction="never">
+        <menu>
+          <item
+            android:id="@+id/menu_item_new_nh_session"
+            android:title="@string/nethunter_session"
+            app:showAsAction="never" />
+          <item
+            android:id="@+id/menu_item_kill_nh_session"
+            android:title="@string/kill_nethunter_session"
+            app:showAsAction="never" />
+        </menu>
+      </item>
+
+      <item
         android:enabled="false"
         android:visible="false"
         android:id="@+id/menu_item_new_x_session"
         android:title="@string/new_x_session"
-        app:showAsAction="never" />
-    </menu>
-  </item>
-  <item
-    android:title="@string/nethunter"
-    app:showAsAction="never">
-    <menu>
-      <item
-        android:id="@+id/menu_item_new_nh_session"
-        android:title="@string/nethunter_session"
         app:showAsAction="never" />
     </menu>
   </item>
@@ -55,6 +74,18 @@
     android:id="@+id/menu_item_package_settings"
     android:title="@string/package_settings"
     app:showAsAction="never"/>
+
+  <item
+    android:title="Quick Settings"
+    >
+    <menu>
+      <item
+        android:id="@+id/script_upgrade"
+        android:title="Upgrade built-in scripts"
+
+        />
+    </menu>
+  </item>
 
   <item
     android:id="@+id/menu_item_settings"

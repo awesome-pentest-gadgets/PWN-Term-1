@@ -1,0 +1,20 @@
+#!/data/data/hilled.pwnterm/files/usr/bin/bash
+
+ROOTPATH=/data/data/hilled.pwnterm/files/usr/sbin/bootkali
+if [ -f $ROOTPATH ]; then
+  true
+  else
+    ROOTPATH=/data/data/hilled.pwnterm/files/usr/bin/bootkali
+    if [ -f $ROOTPATH ]; then
+      true
+    else
+      echo "[!]: Please install nethunter-support package from apt/pkg"
+      exit
+    fi
+fi
+
+
+export SU=$(which su)
+export KK=$(which killkali)
+
+$SU -c $KK

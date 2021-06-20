@@ -1,7 +1,7 @@
 package hilled.pwnterm.utils
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
 import hilled.pwnterm.backend.TerminalSession
 import hilled.pwnterm.component.ComponentManager
 import hilled.pwnterm.component.config.NeoPreference
@@ -40,7 +40,7 @@ object Terminals {
     return sessionComponent.createSession(context, parameter)
   }
 
-  fun createSession(activity: AppCompatActivity, parameter: XParameter): XSession {
+  fun createSession(activity: Activity, parameter: XParameter): XSession {
     val sessionComponent = ComponentManager.getComponent<SessionComponent>()
     return sessionComponent.createSession(activity, parameter)
   }

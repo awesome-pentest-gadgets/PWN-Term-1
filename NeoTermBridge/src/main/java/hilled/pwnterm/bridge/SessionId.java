@@ -2,6 +2,8 @@ package hilled.pwnterm.bridge;
 
 import java.util.Objects;
 
+import java.util.Objects;
+
 /**
  * @author kiva
  */

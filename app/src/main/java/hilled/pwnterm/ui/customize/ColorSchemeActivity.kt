@@ -10,7 +10,7 @@ import android.view.MenuItem
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter
 import es.dmoral.coloromatic.ColorOMaticDialog
@@ -77,7 +77,7 @@ class ColorSchemeActivity : BaseCustomizeActivity() {
 
   override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
     if (keyCode == KeyEvent.KEYCODE_BACK && event!!.action == KeyEvent.ACTION_DOWN && changed) {
-      AlertDialog.Builder(this)
+      MaterialAlertDialogBuilder(this)
         .setMessage(getString(R.string.discard_changes))
         .setPositiveButton(R.string.save) { _, _ ->
           applyColorScheme(editingColorScheme, true)
@@ -129,7 +129,7 @@ class ColorSchemeActivity : BaseCustomizeActivity() {
       changed = true
     }
 
-    AlertDialog.Builder(this)
+    MaterialAlertDialogBuilder(this)
       .setTitle(model.colorName)
       .setView(view)
       .setNegativeButton(android.R.string.no, null)
@@ -159,7 +159,7 @@ class ColorSchemeActivity : BaseCustomizeActivity() {
       val edit = view.findViewById<EditText>(R.id.dialog_edit_text_editor)
       edit.setText(getString(R.string.save_color_scheme_name_template))
 
-      AlertDialog.Builder(this)
+      MaterialAlertDialogBuilder(this)
         .setTitle(R.string.save_color)
         .setView(view)
         .setPositiveButton(android.R.string.yes) { _, _ ->

@@ -29,9 +29,9 @@ object NeoPermission {
         )
       ) {
         AlertDialog.Builder(context).setMessage("需要存储权限来访问存储设备上的文件")
-          .setPositiveButton(android.R.string.ok, { _: DialogInterface, _: Int ->
+          .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
             doRequestPermission(context, requestCode)
-          })
+          }
           .show()
 
       } else {

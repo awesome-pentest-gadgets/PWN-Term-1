@@ -1,5 +1,6 @@
 package hilled.pwnterm.ui.term
 
+import android.app.Activity
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
@@ -9,7 +10,6 @@ import android.os.IBinder
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import hilled.pwnterm.App
 import hilled.pwnterm.R
 import hilled.pwnterm.bridge.Bridge.*
@@ -28,7 +28,7 @@ import java.io.File
 /**
  * @author kiva
  */
-class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
+class NeoTermRemoteInterface : Activity(), ServiceConnection {
   private var termService: NeoTermService? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -193,15 +193,13 @@ class NeoTermRemoteInterface : AppCompatActivity(), ServiceConnection {
     return arguments.toTypedArray()
   }
 
-  private fun openTerm(
-    parameter: ShellParameter,
-    foreground: Boolean = true
-  ) {
+  private fun openTerm(parameter: ShellParameter,
+                       foreground: Boolean = true ) {
     val session = termService!!.createTermSession(parameter)
 
     val data = Intent()
     data.putExtra(EXTRA_SESSION_ID, session.mHandle)
-    setResult(AppCompatActivity.RESULT_OK, data)
+    setResult(RESULT_OK, data)
 
     if (foreground) {
       // Set current session to our new one
