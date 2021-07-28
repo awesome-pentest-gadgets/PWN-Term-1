@@ -25,16 +25,16 @@ package hilled.pwnterm;
 import android.view.KeyEvent;
 
 public class Globals {
-  public static String XLIB_DIR = "/data/data/hilled.pwnterm/files/usr/lib/xorg-neoterm";
+  public static String XLIB_DIR = "/data/data/hilled.pwnterm/files/usr/lib";
   public static String XLIBS[] = {
-    "x11_sdl_native_helpers",
-    "x11_sdl-1.2",
-    "x11_sdl_ttf",
-    "x11_crypto",
+    "sdl_native_helpers",
+    "sdl-1.2",
+    "sdl_ttf",
+    "crypto.so.sdl.1",
   };
   public static String XAPP_LIBS[] = {
-    "x11_application",
-    "x11_sdl_main",
+    "application",
+    "sdl_main",
   };
 
   // These config options are modified by ChangeAppsettings.sh script - see the detailed descriptions there

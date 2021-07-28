@@ -126,11 +126,11 @@ class ShellProfile : NeoProfile() {
     val fontComp = ComponentManager.getComponent<FontComponent>()
     val colorComp = ComponentManager.getComponent<ColorSchemeComponent>()
 
-    profileFont = fontComp.getCurrentFontName()
-    profileColorScheme = colorComp.getCurrentColorSchemeName()
+    profileFont = fontComp.getCurrentFontName().toString()
+    profileColorScheme = colorComp.getCurrentColorSchemeName().toString()
 
     loginShell = NeoPreference.getLoginShellPath()
-    initialCommand = NeoPreference.getInitialCommand()
+    initialCommand = NeoPreference.getInitialCommand().toString()
     enableBell = NeoPreference.isBellEnabled()
     enableVibrate = NeoPreference.isVibrateEnabled()
     enableExecveWrapper = NeoPreference.isExecveWrapperEnabled()
@@ -366,7 +366,7 @@ open class ShellTermSession private constructor(
 
         // execve(2) wrapper to avoid incorrect shebang
         val ldPreloadEnv = if (shellProfile.enableExecveWrapper) {
-          "LD_PRELOAD=${App.get().applicationInfo.nativeLibraryDir}/libnexec.so"
+          "LD_PRELOAD=${NeoTermPath.USR_PATH}/lib/libtermux-exec.so"
         } else {
           ""
         }

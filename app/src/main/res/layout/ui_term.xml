@@ -5,7 +5,7 @@
 
   <hilled.pwnterm.frontend.session.view.extrakey.ExtraKeysView
     android:id="@+id/extra_keys"
-    style="?android:buttonBarStyle"
+    style="@style/Widget.MaterialComponents.BottomAppBar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"

@@ -71,7 +71,7 @@ class ColorSchemeComponent : ConfigFileBasedComponent<NeoColorScheme>(NeoTermPat
     return colors[getCurrentColorSchemeName()]!!
   }
 
-  fun getCurrentColorSchemeName(): String {
+  fun getCurrentColorSchemeName(): String? {
     var currentColorName =
       NeoPreference.loadString(R.string.key_customization_color_scheme, DefaultColorScheme.colorName)
     if (!colors.containsKey(currentColorName)) {

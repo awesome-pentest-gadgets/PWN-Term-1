@@ -1,5 +1,6 @@
 package hilled.pwnterm.frontend.session.view.extrakey
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
@@ -103,6 +104,7 @@ open class RepeatableButton(buttonText: String) : ControlButton(buttonText) {
     return RepeatableButtonWidget(context, attrs, defStyleAttr)
   }
 
+  @SuppressLint("ClickableViewAccessibility")
   private class RepeatableButtonWidget(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
     AppCompatButton(context!!, attrs, defStyleAttr) {
 

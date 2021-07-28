@@ -305,7 +305,8 @@ class TermSessionCallback : TerminalSession.SessionChangedCallback {
     val termView = termSessionData?.termView
     if (termView != null) {
       val clipboard = termView.context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-      clipboard.primaryClip = ClipData.newPlainText("", text)
+      val clip = ClipData.newPlainText("", text)
+      clipboard.setPrimaryClip(clip)
     }
   }
 

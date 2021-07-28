@@ -114,7 +114,7 @@ object NeoPreference {
     return loadInt(App.get().getString(key), defaultValue)
   }
 
-  fun loadString(key: Int, defaultValue: String?): String {
+  fun loadString(key: Int, defaultValue: String?): String? {
     return loadString(App.get().getString(key), defaultValue)
   }
 
@@ -126,7 +126,7 @@ object NeoPreference {
     return preference!!.getInt(key, defaultValue)
   }
 
-  fun loadString(key: String?, defaultValue: String?): String {
+  fun loadString(key: String?, defaultValue: String?): String? {
     return preference!!.getString(key, defaultValue)
   }
 
@@ -160,7 +160,7 @@ object NeoPreference {
     return true
   }
 
-  fun getLoginShellName(): String {
+  fun getLoginShellName(): String? {
     return loadString(R.string.key_general_shell, DefaultValues.loginShell)
   }
 
@@ -169,7 +169,7 @@ object NeoPreference {
 
     // Some programs like ssh needs it
     val shell = File(NeoTermPath.NEOTERM_LOGIN_SHELL_PATH)
-    val loginProgramPath = findLoginProgram(loginProgramName) ?: {
+    val loginProgramPath = loginProgramName?.let { findLoginProgram(it) } ?: {
       setLoginShellName(DefaultValues.loginShell)
       "${NeoTermPath.USR_PATH}/bin/${DefaultValues.loginShell}"
     }()
@@ -212,7 +212,7 @@ object NeoPreference {
     )
   }
 
-  fun getInitialCommand(): String {
+  fun getInitialCommand(): String? {
     return loadString(
       R.string.key_general_initial_command,
       DefaultValues.initialCommand

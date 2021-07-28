@@ -51,8 +51,9 @@ class CustomizeActivity : BaseCustomizeActivity() {
     val fontComponent = ComponentManager.getComponent<FontComponent>()
     val colorSchemeComponent = ComponentManager.getComponent<ColorSchemeComponent>()
 
-    setupSpinner(R.id.custom_font_spinner, fontComponent.getFontNames(),
-      fontComponent.getCurrentFontName(), object : AdapterView.OnItemSelectedListener {
+    fontComponent.getCurrentFontName()?.let {
+      setupSpinner(R.id.custom_font_spinner, fontComponent.getFontNames(),
+        it, object : AdapterView.OnItemSelectedListener {
         override fun onNothingSelected(parent: AdapterView<*>?) {
         }
 
@@ -63,13 +64,15 @@ class CustomizeActivity : BaseCustomizeActivity() {
           fontComponent.setCurrentFont(fontName)
         }
       })
+    }
 
     val colorData = listOf(
       getString(R.string.new_color_scheme),
       *colorSchemeComponent.getColorSchemeNames().toTypedArray()
     )
-    setupSpinner(R.id.custom_color_spinner, colorData,
-      colorSchemeComponent.getCurrentColorSchemeName(), object : AdapterView.OnItemSelectedListener {
+    colorSchemeComponent.getCurrentColorSchemeName()?.let {
+      setupSpinner(R.id.custom_color_spinner, colorData,
+        it, object : AdapterView.OnItemSelectedListener {
         override fun onNothingSelected(parent: AdapterView<*>?) {
         }
 
@@ -85,6 +88,7 @@ class CustomizeActivity : BaseCustomizeActivity() {
           colorSchemeComponent.setCurrentColorScheme(colorName)
         }
       })
+    }
   }
 
   private fun setupSpinner(
@@ -144,7 +148,7 @@ class CustomizeActivity : BaseCustomizeActivity() {
     }
   }
 
-  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item?.itemId) {
       android.R.id.home -> finish()
     }

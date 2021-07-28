@@ -23,7 +23,9 @@ class GeneralSettingsActivity : BasePreferenceActivity() {
       val shellName = value.toString()
       val newShell = NeoPreference.findLoginProgram(shellName)
       if (newShell == null) {
-        requestInstallShell(shellName, currentShell)
+        if (currentShell != null) {
+          requestInstallShell(shellName, currentShell)
+        }
       } else {
         postChangeShell(shellName)
       }
@@ -50,10 +52,10 @@ class GeneralSettingsActivity : BasePreferenceActivity() {
   override fun onBuildHeaders(target: MutableList<Header>?) {
   }
 
-  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item?.itemId) {
       android.R.id.home -> finish()
     }
-    return super.onOptionsItemSelected(item)
+    return item?.let { super.onOptionsItemSelected(it) }
   }
 }

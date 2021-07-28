@@ -27,7 +27,7 @@ class ExtraKeysView(context: Context, attrs: AttributeSet) : LinearLayout(contex
     private val ARROW_DOWN = ArrowButton(IExtraButton.KEY_ARROW_DOWN)
     private val ARROW_LEFT = ArrowButton(IExtraButton.KEY_ARROW_LEFT)
     private val ARROW_RIGHT = ArrowButton(IExtraButton.KEY_ARROW_RIGHT)
-    private val TOGGLE_IME = object : ControlButton(IExtraButton.KEY_TOGGLE_IME) {
+    private val TOGGLE_IME = object : ControlButton(KEY_TOGGLE_IME) {
       override fun onClick(view: View) {
         EventBus.getDefault().post(ToggleImeEvent())
       }
@@ -158,9 +158,9 @@ class ExtraKeysView(context: Context, attrs: AttributeSet) : LinearLayout(contex
 
     val layoutParams =
       if (NeoPreference.isExplicitExtraKeysWeightEnabled())
-        LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f)
+        LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f)
       else
-        LinearLayout.LayoutParams(
+        LayoutParams(
           ViewGroup.LayoutParams.MATCH_PARENT,
           ViewGroup.LayoutParams.WRAP_CONTENT
         )
@@ -168,7 +168,7 @@ class ExtraKeysView(context: Context, attrs: AttributeSet) : LinearLayout(contex
     layoutParams.setMargins(0, 0, 0, 0)
     line.setPadding(0, 0, 0, 0)
     line.gravity = Gravity.START
-    line.orientation = LinearLayout.HORIZONTAL
+    line.orientation = HORIZONTAL
     line.layoutParams = layoutParams
     return line
   }
@@ -203,7 +203,7 @@ class ExtraKeysView(context: Context, attrs: AttributeSet) : LinearLayout(contex
     outerButton.text = extraButton.displayText
     outerButton.setPadding(0, 0, 0, 0)
     outerButton.setTextColor(IExtraButton.NORMAL_TEXT_COLOR)
-    outerButton.setAllCaps(false)
+    outerButton.isAllCaps = false
 
     outerButton.setOnClickListener {
       outerButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
@@ -232,6 +232,6 @@ class ExtraKeysView(context: Context, attrs: AttributeSet) : LinearLayout(contex
   }
 
   private fun calculateButtonWidth(): Int {
-    return context.resources.displayMetrics.widthPixels / ExtraKeysView.MAX_BUTTONS_PER_LINE
+    return context.resources.displayMetrics.widthPixels / MAX_BUTTONS_PER_LINE
   }
 }

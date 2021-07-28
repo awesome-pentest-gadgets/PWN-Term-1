@@ -29,7 +29,7 @@ class FontComponent : NeoComponent {
     NeoPreference.store(R.string.key_customization_font, fontName)
   }
 
-  fun getCurrentFontName(): String {
+  fun getCurrentFontName(): String? {
     val defaultFont = DefaultValues.defaultFont
     var currentFontName = NeoPreference.loadString(R.string.key_customization_font, defaultFont)
     if (!fonts.containsKey(currentFontName)) {

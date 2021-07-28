@@ -44,7 +44,7 @@ class App : Application() {
   }
 
   fun openHelpLink() {
-    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://martiniweb.epizy.com/"))
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://pwn-term.github.io/"))
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     startActivity(intent)
   }

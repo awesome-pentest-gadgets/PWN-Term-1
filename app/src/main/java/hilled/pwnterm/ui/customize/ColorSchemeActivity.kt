@@ -67,7 +67,7 @@ class ColorSchemeActivity : BaseCustomizeActivity() {
     return true
   }
 
-  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item?.itemId) {
       android.R.id.home -> finish()
       R.id.action_done -> applyColorScheme(editingColorScheme)

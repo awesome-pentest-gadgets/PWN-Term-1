@@ -213,16 +213,15 @@ class NeoTermRemoteInterface : Activity(), ServiceConnection {
     }
   }
 
-  private fun openTerm(
-    initialCommand: String?,
-    sessionId: SessionId? = null,
-    foreground: Boolean = true
-  ) {
+  private fun openTerm(initialCommand: String?,
+                       sessionId: SessionId? = null,
+                       foreground: Boolean = true) {
     val parameter = ShellParameter()
       .initialCommand(initialCommand)
       .callback(TermSessionCallback())
       .systemShell(detectSystemShell())
       .session(sessionId)
+
     openTerm(parameter, foreground)
   }
 

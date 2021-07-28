@@ -20,7 +20,7 @@
   <string name="pwn_root" tools:ignore="ExtraTranslation">PWN-Root</string>
   <string name="pwn_root_session" tools:ignore="ExtraTranslation">PWN-Root Session</string>
 
-  <string name="setup_info">Hello to PWN-Term</string>
+  <string name="setup_info">Welcome to PWN-Term</string>
   <string name="setup_next">Do the thing!</string>
   <string name="setup_setup_method">Select your installation method</string>
   <string name="setup_online">Online Setup</string>
