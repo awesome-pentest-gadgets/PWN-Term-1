@@ -1,6 +1,6 @@
 NeoTerm / PWN-Term-Legacy
 =======
-[![Build status](https://github.com/PWN-Term/PWN-Term/workflows/Build/badge.svg)](https://github.com/PWN-Term/PWN-Term/actions/workflows/gradle-check-legacy.yml)
+[![Gralde check Legacy](https://github.com/PWN-Term/PWN-Term/actions/workflows/gradle-check-legacy.yml/badge.svg)](https://github.com/PWN-Term/PWN-Term/actions/workflows/gradle-check-legacy.yml)
 
 ### Help & Documentation
 
