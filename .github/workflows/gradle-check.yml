@@ -1,12 +1,12 @@
-name: Gralde check
+name: Gralde check: Legacy
 
 on:
   push:
     branches:
-      - master
+      - Legacy
   pull_request:
     branches:
-      - master
+      - Legacy
 
 jobs:
   build:
