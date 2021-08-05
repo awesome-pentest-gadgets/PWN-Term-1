@@ -8,8 +8,8 @@ android {
     applicationId "hilled.pwnterm"
     minSdkVersion rootProject.ext.android.MIN_SDK_VERSION
     targetSdkVersion rootProject.ext.android.TARGET_SDK_VERSION
-    versionCode 224
-    versionName "2.2.4-legacy"
+    versionCode 225
+    versionName "2.2.5"
     testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     resConfigs "zh-rCN", "zh-rTW"
     ndk.abiFilters 'armeabi-v7a', 'arm64-v8a'
@@ -55,6 +55,7 @@ dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
   testImplementation rootProject.ext.deps["junit"]
   androidTestImplementation project(path: ':NeoLang')
+  def libsuVersion = '3.1.2'
 
   implementation rootProject.ext.deps["kotlin-stdlib"]
 
@@ -71,23 +72,30 @@ dependencies {
   implementation 'com.google.android.material:material:1.5.0-alpha01'
   implementation 'com.afollestad.material-dialogs:lifecycle:3.3.0'
 
-  implementation 'androidx.compose.ui:ui:1.0.0-rc02'
+  implementation 'androidx.compose.ui:ui:1.0.0'
   // Tooling support (Previews, etc.)
-  implementation 'androidx.compose.ui:ui-tooling:1.0.0-rc02'
+  implementation 'androidx.compose.ui:ui-tooling:1.0.0'
   // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-  implementation 'androidx.compose.foundation:foundation:1.0.0-rc02'
+  implementation 'androidx.compose.foundation:foundation:1.0.0'
   // Material design icons
-  implementation 'androidx.compose.material:material-icons-core:1.0.0-rc02'
-  implementation 'androidx.compose.material:material-icons-extended:1.0.0-rc02'
-  implementation 'androidx.compose.material:material:1.0.0-rc02'
+  implementation 'androidx.compose.material:material-icons-core:1.0.0'
+  implementation 'androidx.compose.material:material-icons-extended:1.0.0'
+  implementation 'androidx.compose.material:material:1.0.0'
   // Integration with activities
-  implementation 'androidx.activity:activity-compose:1.3.0-rc02'
+  implementation 'androidx.activity:activity-compose:1.3.0'
   // Integration with ViewModels
   implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07'
   // Integration with observables
-  implementation 'androidx.compose.runtime:runtime-livedata:1.0.0-rc02'
-  implementation 'androidx.compose.runtime:runtime-rxjava2:1.0.0-rc02'
-
+  implementation 'androidx.compose.runtime:runtime-livedata:1.0.0'
+  implementation 'androidx.compose.runtime:runtime-rxjava2:1.0.0'
+  // The core module is used by all other components
+  implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
+  // Optional: APIs for creating root services
+  implementation "com.github.topjohnwu.libsu:service:${libsuVersion}"
+  // Optional: For com.topjohnwu.superuser.io classes
+  implementation "com.github.topjohnwu.libsu:io:${libsuVersion}"
+  // Optional: Bundle prebuilt BusyBox binaries
+  implementation "com.github.topjohnwu.libsu:busybox:${libsuVersion}"
 
   implementation project(':chrome-tabs')
   implementation project(':NeoLang')

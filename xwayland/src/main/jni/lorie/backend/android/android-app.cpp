@@ -181,7 +181,7 @@ static LorieBackendAndroid* fromLong(jlong v) {
 
 extern "C" JNIEXPORT jlong JNICALL
 JNI_DECLARE(LorieService, createLorieThread)(JNIEnv __unused *env, jobject __unused instance) {
-	setenv("XDG_RUNTIME_DIR", "/data/data/com.termux/files/usr/tmp", 1);
+	setenv("XDG_RUNTIME_DIR", "/data/data/hilled.pwnterm/files/usr/tmp", 1);
 	return (jlong) new LorieBackendAndroid;
 }
 

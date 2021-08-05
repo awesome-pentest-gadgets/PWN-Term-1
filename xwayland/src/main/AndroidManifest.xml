@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="hilled.pwnx11">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="hilled.pwnx11"
+          android:sharedUserId="hilled.pwnterm">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
@@ -26,9 +27,10 @@
             android:exported="true"
             android:process="hilled.pwnx11.separated"/>
         <activity android:name=".MainActivity"
-            android:theme="@style/NoActionBar"
-            android:launchMode="singleInstance"
-            android:configChanges="fontScale|orientation|screenSize|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|screenLayout|touchscreen|uiMode|smallestScreenSize|density">
+                  android:theme="@style/NoActionBar"
+                  android:launchMode="singleInstance"
+                  android:configChanges="fontScale|orientation|screenSize|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|screenLayout|touchscreen|uiMode|smallestScreenSize|density"
+                  android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

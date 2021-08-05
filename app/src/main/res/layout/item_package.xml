@@ -3,7 +3,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:background="@color/layoutcolor"
+              android:background="@color/list_download_item_color_dark"
               android:clickable="true"
               android:focusable="true"
               android:orientation="vertical"

@@ -4,15 +4,15 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "hilled.pwnterm",
+  "applicationId": "hilled.pwnx11",
   "variantName": "processReleaseResources",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 222,
-      "versionName": "2.2.2",
-      "outputFile": "app-release.apk"
+      "versionCode": 100,
+      "versionName": "1.0.0",
+      "outputFile": "xwayland-release.apk"
     }
   ]
 }

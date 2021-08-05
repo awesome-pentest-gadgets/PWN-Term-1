@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat
+import com.topjohnwu.superuser.Shell
 import hilled.pwnterm.utils.extractAssetsDir
 import de.mrapp.android.tabswitcher.*
 import hilled.pwnterm.App
@@ -55,15 +56,6 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     const val REQUEST_SETUP = 22313
   }
 
-  fun pwnrestore() {
-    // Restore scripts if one of those has been deleted (In case if user removed these manually for some reason)
-    extractAssetsDir( "colors", NeoTermPath.COLORS_PATH)
-    extractAssetsDir( "eks", NeoTermPath.EKS_PATH)
-    extractAssetsDir( "fonts", NeoTermPath.FONT_PATH)
-    extractAssetsDir( "scripts", NeoTermPath.USER_SCRIPT_PATH)
-    extractAssetsDir( "profile", NeoTermPath.PROFILE_PATH)
-  }
-
   lateinit var tabSwitcher: TabSwitcher
   private lateinit var fullScreenHelper: FullScreenHelper
   lateinit var toolbar: Toolbar
@@ -74,7 +66,8 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    NeoPermission.initAppPermission(this, NeoPermission.REQUEST_APP_PERMISSION)
+    // Set SELinux status to permissive (Used mainly for root users)
+    Shell.su("setenforce 0").submit()
 
     val fullscreen = NeoPreference.isFullScreenEnabled()
     if (fullscreen) {
@@ -83,6 +76,9 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
         WindowManager.LayoutParams.FLAG_FULLSCREEN
       )
     }
+
+    // Ask permissions
+    NeoPermission.initAppPermission(this, NeoPermission.REQUEST_APP_PERMISSION)
 
     val SDCARD_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1
     if (ContextCompat.checkSelfPermission(
@@ -98,7 +94,6 @@ class NeoTermActivity : AppCompatActivity(), ServiceConnection, SharedPreference
     }
 
     setContentView(R.layout.ui_main)
-    //pwnrestore()
     toolbar = findViewById(R.id.terminal_toolbar)
     setSupportActionBar(toolbar)
 
