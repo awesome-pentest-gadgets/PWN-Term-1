@@ -1,4 +1,4 @@
-name: Gralde check: Legacy
+name: Gralde check Legacy
 
 on:
   push:
