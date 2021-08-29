@@ -17,3 +17,8 @@ jobs:
       - name: Build
         run: |
           ./gradlew :app:assembleDebug
+      - name: Store generated APK file
+        uses: actions/upload-artifact@v2
+        with:
+          name: PWN-Term
+          path: ./app/build/outputs/apk/debug
